@@ -232,15 +232,9 @@ a{color:inherit; text-decoration:none}
     radial-gradient(700px 500px at 30% 35%, rgba(22,193,114,.22), transparent 60%),
     radial-gradient(700px 500px at 70% 55%, rgba(212,175,55,.16), transparent 62%),
     linear-gradient(120deg, rgba(0,0,0,.92), rgba(7,10,8,.65));
-  animation: drift 8s ease-in-out infinite;
+  animation: none;
   filter: saturate(1.15);
-  will-change: transform, filter;
-}
-
-@keyframes drift{
-  0%   { transform: translate3d(0,0,0) scale(1.05); filter: saturate(1.15) hue-rotate(0deg); }
-  50%  { transform: translate3d(-70px,-45px,0) scale(1.12); filter: saturate(1.15) hue-rotate(10deg); }
-  100% { transform: translate3d(0,0,0) scale(1.05); filter: saturate(1.15) hue-rotate(0deg); }
+  will-change: auto;
 }
 
 .motion-lines{
@@ -253,13 +247,8 @@ a{color:inherit; text-decoration:none}
   opacity:.12;
   transform: rotate(8deg);
   mask-image: radial-gradient(circle at 35% 40%, black 40%, transparent 72%);
-  animation: gridMove 12s linear infinite;
-  will-change: background-position;
-}
-
-@keyframes gridMove{
-  0%   { background-position: 0 0, 0 0; }
-  100% { background-position: 240px 0, 0 240px; }
+  animation: none;
+  will-change: auto;
 }
 
 .motion-vignette{
@@ -953,4 +942,11 @@ h2{
   background: #000 !important;
   background-image: none !important;
   border-color: rgba(255,255,255,.10) !important;
+}
+
+@media (max-width: 768px){
+  .qs-item,
+  .hero-card{
+    backdrop-filter: none;
+  }
 }
