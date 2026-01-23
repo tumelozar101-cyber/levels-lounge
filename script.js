@@ -36,3 +36,31 @@
     });
   }
 })();
+
+// Poster image modal
+const modal = document.getElementById("imgModal");
+const modalImg = document.getElementById("imgModalImg");
+const modalClose = document.getElementById("imgModalClose");
+
+document.querySelectorAll("[data-modal-open]").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const src = btn.getAttribute("data-modal-open");
+    modalImg.src = src;
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+  });
+});
+
+const closeModal = () => {
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
+  modalImg.src = "";
+};
+
+modalClose?.addEventListener("click", closeModal);
+modal?.addEventListener("click", (e) => {
+  if (e.target === modal) closeModal();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
+});
